@@ -1,3 +1,5 @@
+import { once, measure } from "helpful-decorators";
+
 class DateClass {
   //   name: string;
   private timeZone: string;
@@ -5,7 +7,10 @@ class DateClass {
     this.timeZone = timeZone;
   }
 
+  @once
+  @measure
   getTime() {
+    console.log(" I am inside the get Time Method");
     const date = new Date().toLocaleTimeString("IST", {
       timeZone: this.timeZone
     });
@@ -40,5 +45,7 @@ class DateClass {
 const dateObj = new DateClass("Asia/Kolkata");
 // console.log(dateObj.getTimezone());
 // console.log(dateObj.getDate());
-// console.log(dateObj.getTime());
-dateObj.getExpensiveopTime();
+// dateObj.getExpensiveopTime();
+
+let a = dateObj.getTime();
+console.log(a);
